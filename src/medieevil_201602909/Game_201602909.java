@@ -5,6 +5,9 @@
  */
 package medieevil_201602909;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import static medieevil_201602909.MedieEvil_201602909.Player1;
 import static medieevil_201602909.MedieEvil_201602909.Player2;
 
@@ -14,9 +17,10 @@ import static medieevil_201602909.MedieEvil_201602909.Player2;
  */
 public class Game_201602909 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Game_201602909
-     */
+   ImageIcon d1, d2, d3, d4, d5, d6;
+   Icon N,D1,D2,D3,D4,D5,D6; 
+   public int NoDado;
+    
     public Game_201602909() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -24,7 +28,7 @@ public class Game_201602909 extends javax.swing.JFrame {
         lp2.setText(Player2);
         this.repaint();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,19 +39,17 @@ public class Game_201602909 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         lp1 = new javax.swing.JLabel();
         lp2 = new javax.swing.JLabel();
+        btndado = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setTitle("MedieEvil");
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -64,28 +66,14 @@ public class Game_201602909 extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(34, 41, 500, 500);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 111, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(584, 430, 161, 111);
         getContentPane().add(jButton1);
-        jButton1.setBounds(584, 340, 75, 25);
+        jButton1.setBounds(580, 330, 75, 30);
         getContentPane().add(jButton2);
-        jButton2.setBounds(584, 383, 75, 25);
+        jButton2.setBounds(580, 380, 75, 30);
         getContentPane().add(jButton3);
-        jButton3.setBounds(670, 340, 75, 25);
+        jButton3.setBounds(670, 330, 75, 30);
         getContentPane().add(jButton4);
-        jButton4.setBounds(670, 383, 75, 25);
+        jButton4.setBounds(670, 380, 75, 30);
 
         lp1.setFont(new java.awt.Font("Colonna MT", 1, 20)); // NOI18N
         lp1.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,12 +85,64 @@ public class Game_201602909 extends javax.swing.JFrame {
         getContentPane().add(lp2);
         lp2.setBounds(584, 183, 161, 37);
 
+        btndado.setPreferredSize(new java.awt.Dimension(100, 100));
+        btndado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btndado);
+        btndado.setBounds(610, 440, 100, 100);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/campo_de_batalla_naruto_shippuden_by_lwisf3rxd-d62dfla.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 810, 600);
+        jLabel1.setBounds(0, 0, 800, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btndadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndadoActionPerformed
+        int no = (int) (Math.random() * 6) + 1;
+        d1 = new ImageIcon(getClass().getResource("/imagenes/d1.png"));
+        d2 = new ImageIcon(getClass().getResource("/imagenes/d2.png"));
+        d3 = new ImageIcon(getClass().getResource("/imagenes/d3.png"));
+        d4 = new ImageIcon(getClass().getResource("/imagenes/d4.png"));
+        d5 = new ImageIcon(getClass().getResource("/imagenes/d5.png"));
+        d6 = new ImageIcon(getClass().getResource("/imagenes/d6.png"));
+        D1 = new ImageIcon(d1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        D2 = new ImageIcon(d2.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        D3 = new ImageIcon(d3.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        D4 = new ImageIcon(d4.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        D5 = new ImageIcon(d5.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        D6 = new ImageIcon(d6.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+
+        switch (no) {
+            case 1:
+                btndado.setIcon(D1);
+                NoDado = no;
+                break;
+            case 2:
+                btndado.setIcon(D2);
+                NoDado = no;
+                break;
+            case 3:
+                btndado.setIcon(D3);
+                NoDado = no;
+                break;
+            case 4:
+                btndado.setIcon(D4);
+                NoDado = no;
+                break;
+            case 5:
+                btndado.setIcon(D5);
+                NoDado = no;
+                break;
+            case 6:
+                btndado.setIcon(D6);
+                NoDado = no;
+                break;
+        }
+    }//GEN-LAST:event_btndadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,13 +180,13 @@ public class Game_201602909 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btndado;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lp1;
     private javax.swing.JLabel lp2;
     // End of variables declaration//GEN-END:variables
