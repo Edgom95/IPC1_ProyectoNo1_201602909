@@ -5,6 +5,9 @@
  */
 package medieevil_201602909;
 
+import static medieevil_201602909.MedieEvil_201602909.Player1;
+import static medieevil_201602909.MedieEvil_201602909.Player2;
+
 /**
  *
  * @author edgom
@@ -16,6 +19,10 @@ public class Game_201602909 extends javax.swing.JFrame {
      */
     public Game_201602909() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        lp1.setText(Player1);
+        lp2.setText(Player2);
+        this.repaint();
     }
 
     /**
@@ -79,8 +86,14 @@ public class Game_201602909 extends javax.swing.JFrame {
         jButton3.setBounds(670, 340, 75, 25);
         getContentPane().add(jButton4);
         jButton4.setBounds(670, 383, 75, 25);
+
+        lp1.setFont(new java.awt.Font("Colonna MT", 1, 20)); // NOI18N
+        lp1.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(lp1);
         lp1.setBounds(584, 27, 161, 39);
+
+        lp2.setFont(new java.awt.Font("Colonna MT", 1, 20)); // NOI18N
+        lp2.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(lp2);
         lp2.setBounds(584, 183, 161, 37);
 

@@ -5,6 +5,7 @@
  */
 package medieevil_201602909;
 
+import imagenes.Casilla;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -18,10 +19,32 @@ import static medieevil_201602909.MedieEvil_201602909.Player2;
 public class Composicion_201602909 extends javax.swing.JFrame {
 
     public static int Dimension;
+    public static int altob=100;
+    public static int anchob=100;
+    public Casilla[] comp1 = new Casilla[3];
+    public Casilla[] comp2 = new Casilla[3];
     
     public Composicion_201602909() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.Composicion();
+        this.repaint();
+    }
+
+    public void Composicion() {
+        
+        for (int i = 0; i < comp1.length; i++) {
+            comp1[i] = new Casilla();
+            comp1[i].setSize(anchob,altob);
+            comp1[i].setLocation(i*100,i);
+            pj1.add(comp1[i]);          
+        }
+        for (int i = 0; i < comp2.length; i++) {
+            comp2[i] = new Casilla();
+            comp2[i].setSize(anchob,altob);
+            comp2[i].setLocation(i*100,i);
+            pj2.add(comp2[i]);          
+        }  
     }
 
     /**
@@ -44,9 +67,7 @@ public class Composicion_201602909 extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setTitle("MedieEvil");
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Colonna MT", 0, 24)); // NOI18N
@@ -113,7 +134,7 @@ public class Composicion_201602909 extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/campodebatalla1.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 800, 600);
+        jLabel4.setBounds(0, 0, 800, 620);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
