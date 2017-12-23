@@ -17,13 +17,13 @@ import static medieevil_201602909.Composicion_201602909.anchob;
  *
  * @author edgom
  */
-public class Casilla extends JButton implements ActionListener {
+public class Casillap1 extends JButton implements ActionListener {
 
     ImageIcon Gr, Mg, Pn;
     Icon Guerrero, Mago, Princesa;
     int valor;
 
-    public Casilla() {
+    public Casillap1() {
         this.AgregarImagen();
         this.addActionListener(this);
     }
@@ -49,9 +49,9 @@ public class Casilla extends JButton implements ActionListener {
     }
 
     public void AgregarImagen() {
-        Gr = new ImageIcon(this.getClass().getResource("guerrero.png"));
-        Mg = new ImageIcon(this.getClass().getResource("mago.png"));
-        Pn = new ImageIcon(this.getClass().getResource("princesa.png"));
+        Gr = new ImageIcon(this.getClass().getResource("guerrero1.png"));
+        Mg = new ImageIcon(this.getClass().getResource("mago1.png"));
+        Pn = new ImageIcon(this.getClass().getResource("princesa1.png"));
         Guerrero = new ImageIcon(Gr.getImage().getScaledInstance(anchob,altob, Image.SCALE_DEFAULT));
         Mago = new ImageIcon(Mg.getImage().getScaledInstance(anchob,altob, Image.SCALE_DEFAULT));
         Princesa = new ImageIcon(Pn.getImage().getScaledInstance(anchob,altob, Image.SCALE_DEFAULT));

@@ -8,6 +8,7 @@ package medieevil_201602909;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import static medieevil_201602909.Composicion_201602909.Dimension;
 import static medieevil_201602909.MedieEvil_201602909.Player1;
 import static medieevil_201602909.MedieEvil_201602909.Player2;
 
@@ -17,16 +18,36 @@ import static medieevil_201602909.MedieEvil_201602909.Player2;
  */
 public class Game_201602909 extends javax.swing.JFrame {
 
-   ImageIcon d1, d2, d3, d4, d5, d6;
-   Icon N,D1,D2,D3,D4,D5,D6; 
+   ImageIcon d1, d2, d3, d4, d5, d6,up,down,left,right;
+   Icon N,D1,D2,D3,D4,D5,D6,UP,DOWN,LEFT,RIGHT; 
    public int NoDado;
+   public static int Turno=0;
+   public Tablero_201602909 tab;
     
     public Game_201602909() {
         initComponents();
         this.setLocationRelativeTo(null);
         lp1.setText(Player1);
         lp2.setText(Player2);
+        AgregarFlechas();
+        tab = new Tablero_201602909(Dimension,pj);
         this.repaint();
+    }
+    
+    public void AgregarFlechas()
+    {
+    up = new ImageIcon(getClass().getResource("/imagenes/up.png"));
+    down = new ImageIcon(getClass().getResource("/imagenes/down.png"));
+    left = new ImageIcon(getClass().getResource("/imagenes/left.png"));
+    right = new ImageIcon(getClass().getResource("/imagenes/right.png"));
+    UP = new ImageIcon(up.getImage().getScaledInstance(75, 30, Image.SCALE_DEFAULT));
+    DOWN = new ImageIcon(down.getImage().getScaledInstance(75, 30, Image.SCALE_DEFAULT));
+    LEFT = new ImageIcon(left.getImage().getScaledInstance(75, 30, Image.SCALE_DEFAULT));
+    RIGHT = new ImageIcon(right.getImage().getScaledInstance(75, 30, Image.SCALE_DEFAULT));
+    btnup.setIcon(UP);
+    btndown.setIcon(DOWN);
+    btnleft.setIcon(LEFT);
+    btnright.setIcon(RIGHT);
     }
     
     /**
@@ -38,11 +59,11 @@ public class Game_201602909 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        pj = new javax.swing.JPanel();
+        btnup = new javax.swing.JButton();
+        btnleft = new javax.swing.JButton();
+        btndown = new javax.swing.JButton();
+        btnright = new javax.swing.JButton();
         lp1 = new javax.swing.JLabel();
         lp2 = new javax.swing.JLabel();
         btndado = new javax.swing.JButton();
@@ -53,27 +74,51 @@ public class Game_201602909 extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pjLayout = new javax.swing.GroupLayout(pj);
+        pj.setLayout(pjLayout);
+        pjLayout.setHorizontalGroup(
+            pjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pjLayout.setVerticalGroup(
+            pjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(34, 41, 500, 500);
-        getContentPane().add(jButton1);
-        jButton1.setBounds(580, 330, 75, 30);
-        getContentPane().add(jButton2);
-        jButton2.setBounds(580, 380, 75, 30);
-        getContentPane().add(jButton3);
-        jButton3.setBounds(670, 330, 75, 30);
-        getContentPane().add(jButton4);
-        jButton4.setBounds(670, 380, 75, 30);
+        getContentPane().add(pj);
+        pj.setBounds(34, 41, 500, 500);
+
+        btnup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnupActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnup);
+        btnup.setBounds(580, 330, 75, 30);
+
+        btnleft.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnleftActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnleft);
+        btnleft.setBounds(580, 380, 75, 30);
+
+        btndown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndownActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btndown);
+        btndown.setBounds(670, 330, 75, 30);
+
+        btnright.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnrightActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnright);
+        btnright.setBounds(670, 380, 75, 30);
 
         lp1.setFont(new java.awt.Font("Colonna MT", 1, 20)); // NOI18N
         lp1.setForeground(new java.awt.Color(255, 255, 255));
@@ -144,6 +189,22 @@ public class Game_201602909 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btndadoActionPerformed
 
+    private void btnupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupActionPerformed
+    Turno++;
+    }//GEN-LAST:event_btnupActionPerformed
+
+    private void btndownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndownActionPerformed
+    Turno++;
+    }//GEN-LAST:event_btndownActionPerformed
+
+    private void btnleftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnleftActionPerformed
+    Turno++;
+    }//GEN-LAST:event_btnleftActionPerformed
+
+    private void btnrightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrightActionPerformed
+    Turno++;
+    }//GEN-LAST:event_btnrightActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -181,13 +242,13 @@ public class Game_201602909 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btndado;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lp1;
-    private javax.swing.JLabel lp2;
+    private javax.swing.JButton btndown;
+    private javax.swing.JButton btnleft;
+    private javax.swing.JButton btnright;
+    private javax.swing.JButton btnup;
+    public static javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel lp1;
+    public static javax.swing.JLabel lp2;
+    private javax.swing.JPanel pj;
     // End of variables declaration//GEN-END:variables
 }
