@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  */
 public class Tablero_201602909 
 {
-public int Tamaño=0, posgx1=0, posgy1=0, posgx2=0, posgy2=0,TamCasilla=0;
+public int Tamaño=0, posgy=0, posgx=0, posgx2=0,posgy2=0,TamCasilla=0;
 public ImageIcon guerrero1,guerrero2,mago1,mago2,princesa1,princesa2,corazon,bomba;
 public Image G1,G2,M1,M2,P1,P2,C,B;
 public ImageIcon Guerrero1,Guerrero2,Mago1,Mago2,Princesa1,Princesa2,Corazon,Bomba;
@@ -35,6 +35,10 @@ public JLabel Player2;
      {
      this.Tamaño=dimension;
      this.fondo=tab;
+     this.posgy=(int)((dimension-1)/2);
+     this.posgx=0;
+     this.posgx2=(int)(dimension-1);
+     this.posgy2=0;
      IniciarTablero(dimension);
      }    
      
@@ -44,8 +48,10 @@ public JLabel Player2;
      matriz = new int[dimension][dimension]; 
      matrizlabel = new JLabel[dimension][dimension];
      
-     matriz[0][dimension-1]=1;
-     matriz[dimension-1][0]=2;
+     int cp1 = (int)((dimension-1)/2);
+     int fp2 = (int)(dimension-1);
+     matriz[0][cp1]=1;
+     matriz[fp2][0]=2;
      VidasAleatorias(dimension);
      BombasAleatorias(dimension);
      
@@ -55,7 +61,7 @@ public JLabel Player2;
             }
         }
         AgregarIconos();
-        AgregarIconosTab(dimension);
+        AgregarIconosTab();
     }
 
     public void AgregarIconos() {
@@ -89,7 +95,7 @@ public JLabel Player2;
         double kokoro = (0.05) *(dimension*dimension);
         int corazones = (int) kokoro;
 
-        for (int i = 0; i <= corazones; i++) {
+        for (int i = 0; i < corazones; i++) {
             int f = (int) (Math.random() * dimension);
             int c = (int) (Math.random() * dimension);
             matriz[f][c] = 3;
@@ -100,17 +106,17 @@ public JLabel Player2;
         double bomb = (0.1)*(dimension*dimension);
         int bombas = (int) bomb;
 
-        for (int i = 0; i <= bombas; i++) {
+        for (int i = 0; i < bombas; i++) {
             int f = (int) (Math.random()*dimension);
             int c = (int) (Math.random()*dimension);
             matriz[f][c] = 4;
         }
     }
 
-    public void AgregarIconosTab(int dimension) {
-        TamCasilla = 500 / dimension;
-        for (int i = 0; i < dimension; i++) {
-            for (int j = 0; j < dimension; j++) {
+    public void AgregarIconosTab() {
+        TamCasilla = 500 / Tamaño;
+        for (int i = 0; i < Tamaño; i++) {
+            for (int j = 0; j < Tamaño; j++) {
                 switch (matriz[i][j]) {
                     case 0:
                         Casilla = new JLabel();
@@ -140,7 +146,7 @@ public JLabel Player2;
                         fondo.repaint();
                         break;
                     case 3:
-                         Casilla = new JLabel(Corazon);
+                        Casilla = new JLabel(Corazon);
                         Casilla.setOpaque(false);
                         Casilla.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
                         Casilla.setBounds(i * TamCasilla, j * TamCasilla, TamCasilla, TamCasilla);

@@ -5,6 +5,14 @@
  */
 package medieevil_201602909;
 
+import Hilos.Up1;
+import Hilos.Right1;
+import Hilos.Down1;
+import Hilos.Down2;
+import Hilos.Left1;
+import Hilos.Left2;
+import Hilos.Right2;
+import Hilos.Up2;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -21,7 +29,7 @@ public class Game_201602909 extends javax.swing.JFrame {
    ImageIcon d1, d2, d3, d4, d5, d6,up,down,left,right;
    Icon N,D1,D2,D3,D4,D5,D6,UP,DOWN,LEFT,RIGHT; 
    public int NoDado;
-   public static int Turno=0;
+   public static int Turno=5;
    public Tablero_201602909 tab;
     
     public Game_201602909() {
@@ -30,10 +38,8 @@ public class Game_201602909 extends javax.swing.JFrame {
         lp1.setText(Player1);
         lp2.setText(Player2);
         AgregarFlechas();
-        tab = new Tablero_201602909(Dimension,pj);
         this.repaint();
-    }
-    
+    }    
     public void AgregarFlechas()
     {
     up = new ImageIcon(getClass().getResource("/imagenes/up.png"));
@@ -48,6 +54,7 @@ public class Game_201602909 extends javax.swing.JFrame {
     btndown.setIcon(DOWN);
     btnleft.setIcon(LEFT);
     btnright.setIcon(RIGHT);
+    tab = new Tablero_201602909(Dimension,pj);
     }
     
     /**
@@ -190,19 +197,35 @@ public class Game_201602909 extends javax.swing.JFrame {
     }//GEN-LAST:event_btndadoActionPerformed
 
     private void btnupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupActionPerformed
-    Turno++;
+//    Up1 u1 = new Up1(NoDado,tab);
+//    u1.start();
+
+        Up2 u2 = new Up2(NoDado, tab);
+        u2.start();
     }//GEN-LAST:event_btnupActionPerformed
 
     private void btndownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndownActionPerformed
-    Turno++;
+//    Down1 dn1 = new Down1(NoDado,tab);
+//    dn1.start();
+
+        Down2 dn2 = new Down2(NoDado, tab);
+        dn2.start();
     }//GEN-LAST:event_btndownActionPerformed
 
     private void btnleftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnleftActionPerformed
-    Turno++;
+//    Left1 l1 = new Left1(NoDado,tab);
+//    l1.start();
+
+        Left2 l2 = new Left2(NoDado, tab);
+        l2.start();
     }//GEN-LAST:event_btnleftActionPerformed
 
     private void btnrightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrightActionPerformed
-    Turno++;
+// Right1 r1 = new Right1(NoDado,tab);
+//  r1.start();
+
+        Right2 r2 = new Right2(NoDado, tab);
+        r2.start();
     }//GEN-LAST:event_btnrightActionPerformed
 
     /**
