@@ -188,6 +188,7 @@ public class Game_201602909 extends javax.swing.JFrame {
         if ((tiempo == 0) && (Vidasp1 == Vidasp2)) {
             JOptionPane.showMessageDialog(null, "Juego Empatado", "Empate!!!", INFORMATION_MESSAGE);
             GuardarGanadores();
+            JOptionPane.showMessageDialog(null, "Se ha creado un archivo de texto con \n los nombres de ambos Jugadores", "Archivo Guardado con Exito!!!", INFORMATION_MESSAGE);
             this.setVisible(false);
         } else if (((Vidasp1 == 0) && (Vidasp2 > Vidasp1)) || ((tiempo == 0) && (Vidasp2 > Vidasp1))) {
             JOptionPane.showMessageDialog(null, "El Jugador2 " + lp2.getText() + " ha ganado", "Ganaste!!!", INFORMATION_MESSAGE);
