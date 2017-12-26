@@ -14,6 +14,11 @@ import Hilos.Left2;
 import Hilos.Right2;
 import Hilos.Up2;
 import java.awt.Image;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -36,7 +41,7 @@ public class Game_201602909 extends javax.swing.JFrame {
    public static int Turno=0;
    ImageIcon v8,v7,v6,v5,v4,v3,v2,v1,v0;
    Icon V8,V7,V6,V5,V4,V3,V2,V1,V0;
-   public static int tiempo;
+   public static int tiempo=50;
    
    
    public Tablero_201602909 tab;
@@ -174,7 +179,54 @@ public class Game_201602909 extends javax.swing.JFrame {
             lvidasp2.setIcon(V0);
         break;
     }
-    }  
+    }
+   
+    public void GameOver() {
+
+        ltiempo.setText(Integer.toString(tiempo));
+        tiempo--;
+        if ((tiempo == 0) && (Vidasp1 == Vidasp2)) {
+            JOptionPane.showMessageDialog(null, "Juego Empatado", "Empate!!!", INFORMATION_MESSAGE);
+            GuardarGanadores();
+            this.setVisible(false);
+        } else if (((Vidasp1 == 0) && (Vidasp2 > Vidasp1)) || ((tiempo == 0) && (Vidasp2 > Vidasp1))) {
+            JOptionPane.showMessageDialog(null, "El Jugador2 " + lp2.getText() + " ha ganado", "Ganaste!!!", INFORMATION_MESSAGE);
+            GuardarGanadores();
+            this.setVisible(false);
+        } else if ((Vidasp2 == 0) && (Vidasp1 > Vidasp2) || ((tiempo == 0) && (Vidasp1 > Vidasp2))) {
+            JOptionPane.showMessageDialog(null, "El Jugador1 " + lp1.getText() + " ha ganado", "Ganaste!!!", INFORMATION_MESSAGE);
+            GuardarGanadores();
+            this.setVisible(false);
+        }
+    }
+    public void GuardarGanadores() {
+        File archivo = new File("Ganadores.txt");
+        try {
+            FileWriter fw = new FileWriter(archivo);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            pw.write("Top Ganadores"+"\n");
+            if((Vidasp1 == 0) && (Vidasp2 > Vidasp1))
+            {
+            pw.write("Nombre: "+lp2.getText()+" "+"Tiempo: "+Integer.toString(tiempo)+"   \n");
+            }
+            else if ((Vidasp2 == 0) && (Vidasp1 > Vidasp2))
+            {
+            pw.write("Nombre: "+lp1.getText()+" "+"Tiempo: "+Integer.toString(tiempo)+"   \n");
+            }
+            else if (tiempo==0)
+            {
+            pw.write("Nombre: "+lp1.getText()+" "+"Tiempo: "+Integer.toString(tiempo)+"   \n");
+            pw.write("Nombre: "+lp2.getText()+" "+"Tiempo: "+Integer.toString(tiempo)+"   \n");
+            }
+            pw.close();
+            bw.close();
+
+        } catch (IOException e) {
+        }
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -200,6 +252,8 @@ public class Game_201602909 extends javax.swing.JFrame {
         btndado = new javax.swing.JButton();
         lvidasp1 = new javax.swing.JLabel();
         lvidasp2 = new javax.swing.JLabel();
+        ltiempo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setTitle("MedieEvil");
@@ -318,11 +372,22 @@ public class Game_201602909 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btndado);
-        btndado.setBounds(570, 230, 100, 100);
+        btndado.setBounds(560, 230, 100, 100);
         getContentPane().add(lvidasp1);
         lvidasp1.setBounds(570, 50, 160, 60);
         getContentPane().add(lvidasp2);
         lvidasp2.setBounds(570, 370, 160, 60);
+
+        ltiempo.setFont(new java.awt.Font("Colonna MT", 1, 22)); // NOI18N
+        ltiempo.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(ltiempo);
+        ltiempo.setBounds(680, 280, 100, 50);
+
+        jLabel2.setFont(new java.awt.Font("Colonna MT", 1, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Tiempo: ");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(680, 240, 90, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/campo_de_batalla_naruto_shippuden_by_lwisf3rxd-d62dfla.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -374,17 +439,7 @@ public class Game_201602909 extends javax.swing.JFrame {
         }
     this.AgregarVidasP1();
     this.AgregarVidasP2();
-    
-        if (tiempo == 300) {
-            JOptionPane.showMessageDialog(null, "El tiempo se ha terminado.", "Tiempo acabado!!!", INFORMATION_MESSAGE);
-            this.setVisible(false);
-        } else if ((Vidasp1 == 0) && (Vidasp2 > Vidasp1)) {
-            JOptionPane.showMessageDialog(null, "El Jugador2 " + lp2.getText() + " ha ganado", "Ganaste!!!", INFORMATION_MESSAGE);
-            this.setVisible(false);
-        } else if ((Vidasp2 == 0) && (Vidasp1 > Vidasp2)) {
-            JOptionPane.showMessageDialog(null, "El Jugador1 " + lp1.getText() + " ha ganado", "Ganaste!!!", INFORMATION_MESSAGE);
-            this.setVisible(false);       
-        }
+    this.GameOver();
     }//GEN-LAST:event_btndadoActionPerformed
 
     private void btnupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupActionPerformed
@@ -545,10 +600,12 @@ public class Game_201602909 extends javax.swing.JFrame {
     private javax.swing.JButton btnright2;
     private javax.swing.JButton btnup;
     public static javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     public static javax.swing.JLabel lp1;
     public static javax.swing.JLabel lp2;
+    private javax.swing.JLabel ltiempo;
     private javax.swing.JLabel lvidasp1;
     private javax.swing.JLabel lvidasp2;
     private javax.swing.JPanel pj;

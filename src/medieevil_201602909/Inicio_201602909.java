@@ -96,7 +96,8 @@ public class Inicio_201602909 extends javax.swing.JFrame {
     }//GEN-LAST:event_btniniciarActionPerformed
 
     private void btnmsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmsActionPerformed
-        // TODO add your handling code here:
+    MejoresScores_201602909 ms = new MejoresScores_201602909();
+    ms.setVisible(true);
     }//GEN-LAST:event_btnmsActionPerformed
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
