@@ -17,10 +17,12 @@ public class Down1 extends Thread {
 
     public int Cant = 0;
     public Tablero_201602909 tab = null;
+    public int V;
 
-    public Down1(int cant, Tablero_201602909 tab) {
+    public Down1(int cant, Tablero_201602909 tab,int v) {
         this.Cant = cant;
         this.tab = tab;
+        this.V=v;
     }
 
     public void MoverDown(int cantidad) throws InterruptedException {
@@ -31,7 +33,8 @@ public class Down1 extends Thread {
             cantidad = 0;
             tab.matriz[tab.Tamaño - 1][tab.Tamaño - 1] = 0;
             tab.matrizlabel[tab.Tamaño - 1][tab.Tamaño - 1].setIcon(null);
-            tab.posgx = 0;
+            tab.posgy=(int)((tab.Tamaño)/2);
+            tab.posgx =(int)((tab.Tamaño)/2);
             tab.matriz[tab.posgx][tab.posgy] = 1;
             tab.AgregarIconosTab();
         }
@@ -40,14 +43,23 @@ public class Down1 extends Thread {
         tab.AgregarIconosTab();
         tab.posgy = tab.posgy + 1;
         tab.matriz[tab.posgx][tab.posgy] = 1;
+        if ((tab.matriz[tab.posgx][tab.posgy] == 1) || (tab.matriz[tab.posgx][tab.posgy] == 3)) {
+            tab.matrizlabel[tab.posgx][tab.posgy].setIcon(null);
+            tab.matriz[tab.posgx][tab.posgy] = 1;
+            V = V + 1;
+        } else if ((tab.matriz[tab.posgx][tab.posgy] == 1) || (tab.matriz[tab.posgx][tab.posgy] == 4)) {
+            tab.matrizlabel[tab.posgx][tab.posgy].setIcon(null);
+            tab.matriz[tab.posgx][tab.posgy] = 1;
+            V = V - 1;
+        }
         tab.AgregarIconosTab();
         cantidad--;
-        Thread.sleep(100);
+        Thread.sleep(250);
         MoverDown(cantidad);
     }
 
     public boolean ComprobarPos() {
-        if ((tab.posgy >= tab.Tamaño - 1) && (tab.posgx >= tab.Tamaño - 1)) {
+        if ((tab.posgy >= tab.Tamaño - 1)) {
             return true;
         } else {
             return false;

@@ -16,6 +16,8 @@ import Hilos.Up2;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static medieevil_201602909.Composicion_201602909.Dimension;
 import static medieevil_201602909.MedieEvil_201602909.Player1;
 import static medieevil_201602909.MedieEvil_201602909.Player2;
@@ -29,7 +31,14 @@ public class Game_201602909 extends javax.swing.JFrame {
    ImageIcon d1, d2, d3, d4, d5, d6,up,down,left,right;
    Icon N,D1,D2,D3,D4,D5,D6,UP,DOWN,LEFT,RIGHT; 
    public int NoDado;
-   public static int Turno=5;
+   public static int Vidasp1=5;
+   public static int Vidasp2=5;
+   public static int Turno=0;
+   ImageIcon v8,v7,v6,v5,v4,v3,v2,v1,v0;
+   Icon V8,V7,V6,V5,V4,V3,V2,V1,V0;
+   public static int tiempo;
+   
+   
    public Tablero_201602909 tab;
     
     public Game_201602909() {
@@ -54,9 +63,118 @@ public class Game_201602909 extends javax.swing.JFrame {
     btndown.setIcon(DOWN);
     btnleft.setIcon(LEFT);
     btnright.setIcon(RIGHT);
+    bntup2.setIcon(UP);
+    btndown2.setIcon(DOWN);
+    btnleft2.setIcon(LEFT);
+    btnright2.setIcon(RIGHT);
     tab = new Tablero_201602909(Dimension,pj);
     }
     
+    public void AgregarVidasP1()
+    {
+    v8 = new ImageIcon(getClass().getResource("/imagenes/8vidas.png"));
+    v7 = new ImageIcon(getClass().getResource("/imagenes/7vidas.png"));
+    v6 = new ImageIcon(getClass().getResource("/imagenes/6vidas.png"));
+    v5 = new ImageIcon(getClass().getResource("/imagenes/5vidas.png"));
+    v4 = new ImageIcon(getClass().getResource("/imagenes/4vidas.png"));
+    v3 = new ImageIcon(getClass().getResource("/imagenes/3vidas.png"));
+    v2 = new ImageIcon(getClass().getResource("/imagenes/2vidas.png"));
+    v1 = new ImageIcon(getClass().getResource("/imagenes/1vidas.png"));
+    v0 = new ImageIcon(getClass().getResource("/imagenes/0vidas.png"));
+    V8 = new ImageIcon(v8.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V7 = new ImageIcon(v7.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V6 = new ImageIcon(v6.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V5 = new ImageIcon(v5.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V4 = new ImageIcon(v4.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V3 = new ImageIcon(v3.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V2 = new ImageIcon(v2.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V1 = new ImageIcon(v1.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V0 = new ImageIcon(v0.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    
+    switch(Vidasp1)
+    {
+        case 8:
+            lvidasp1.setIcon(V8);
+        break;
+        case 7:
+            lvidasp1.setIcon(V7);
+        break;
+        case 6:
+            lvidasp1.setIcon(V6);
+        break;
+        case 5:
+            lvidasp1.setIcon(V5);
+        break;
+        case 4:
+            lvidasp1.setIcon(V4);
+        break;
+        case 3:
+            lvidasp1.setIcon(V3);
+        break;
+        case 2:
+            lvidasp1.setIcon(V2);
+        break;
+        case 1:
+            lvidasp1.setIcon(V1);
+        break;
+        case 0:
+            lvidasp1.setIcon(V0);
+        break;
+    }
+    }
+    
+    public void AgregarVidasP2()
+    {
+    v8 = new ImageIcon(getClass().getResource("/imagenes/8vidas.png"));
+    v7 = new ImageIcon(getClass().getResource("/imagenes/7vidas.png"));
+    v6 = new ImageIcon(getClass().getResource("/imagenes/6vidas.png"));
+    v5 = new ImageIcon(getClass().getResource("/imagenes/5vidas.png"));
+    v4 = new ImageIcon(getClass().getResource("/imagenes/4vidas.png"));
+    v3 = new ImageIcon(getClass().getResource("/imagenes/3vidas.png"));
+    v2 = new ImageIcon(getClass().getResource("/imagenes/2vidas.png"));
+    v1 = new ImageIcon(getClass().getResource("/imagenes/1vidas.png"));
+    v0 = new ImageIcon(getClass().getResource("/imagenes/0vidas.png"));
+    V8 = new ImageIcon(v8.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V7 = new ImageIcon(v7.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V6 = new ImageIcon(v6.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V5 = new ImageIcon(v5.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V4 = new ImageIcon(v4.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V3 = new ImageIcon(v3.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V2 = new ImageIcon(v2.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V1 = new ImageIcon(v1.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    V0 = new ImageIcon(v0.getImage().getScaledInstance(160, 60, Image.SCALE_DEFAULT));
+    
+    switch(Vidasp2)
+    {
+        case 8:
+            lvidasp2.setIcon(V8);
+        break;
+        case 7:
+            lvidasp2.setIcon(V7);
+        break;
+        case 6:
+            lvidasp2.setIcon(V6);
+        break;
+        case 5:
+            lvidasp2.setIcon(V5);
+        break;
+        case 4:
+            lvidasp2.setIcon(V4);
+        break;
+        case 3:
+            lvidasp2.setIcon(V3);
+        break;
+        case 2:
+            lvidasp2.setIcon(V2);
+        break;
+        case 1:
+            lvidasp2.setIcon(V1);
+        break;
+        case 0:
+            lvidasp2.setIcon(V0);
+        break;
+    }
+    }  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,7 +191,15 @@ public class Game_201602909 extends javax.swing.JFrame {
         btnright = new javax.swing.JButton();
         lp1 = new javax.swing.JLabel();
         lp2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        bntup2 = new javax.swing.JButton();
+        btndown2 = new javax.swing.JButton();
+        btnleft2 = new javax.swing.JButton();
+        btnright2 = new javax.swing.JButton();
         btndado = new javax.swing.JButton();
+        lvidasp1 = new javax.swing.JLabel();
+        lvidasp2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setTitle("MedieEvil");
@@ -93,7 +219,7 @@ public class Game_201602909 extends javax.swing.JFrame {
         );
 
         getContentPane().add(pj);
-        pj.setBounds(34, 41, 500, 500);
+        pj.setBounds(30, 20, 500, 500);
 
         btnup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +227,7 @@ public class Game_201602909 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnup);
-        btnup.setBounds(580, 330, 75, 30);
+        btnup.setBounds(570, 120, 75, 30);
 
         btnleft.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +235,7 @@ public class Game_201602909 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnleft);
-        btnleft.setBounds(580, 380, 75, 30);
+        btnleft.setBounds(570, 170, 75, 30);
 
         btndown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +243,7 @@ public class Game_201602909 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btndown);
-        btndown.setBounds(670, 330, 75, 30);
+        btndown.setBounds(660, 120, 75, 30);
 
         btnright.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,17 +251,65 @@ public class Game_201602909 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnright);
-        btnright.setBounds(670, 380, 75, 30);
+        btnright.setBounds(660, 170, 75, 30);
 
         lp1.setFont(new java.awt.Font("Colonna MT", 1, 20)); // NOI18N
         lp1.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(lp1);
-        lp1.setBounds(584, 27, 161, 39);
+        lp1.setBounds(680, 10, 100, 30);
 
         lp2.setFont(new java.awt.Font("Colonna MT", 1, 20)); // NOI18N
         lp2.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(lp2);
-        lp2.setBounds(584, 183, 161, 37);
+        lp2.setBounds(680, 330, 100, 30);
+
+        jLabel3.setFont(new java.awt.Font("Colonna MT", 0, 22)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Turno de:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(570, 20, 100, 20);
+
+        jLabel4.setFont(new java.awt.Font("Colonna MT", 0, 22)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Turno de:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(570, 340, 90, 22);
+
+        bntup2.setPreferredSize(new java.awt.Dimension(75, 30));
+        bntup2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntup2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bntup2);
+        bntup2.setBounds(570, 440, 75, 30);
+
+        btndown2.setPreferredSize(new java.awt.Dimension(75, 30));
+        btndown2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndown2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btndown2);
+        btndown2.setBounds(660, 440, 75, 30);
+
+        btnleft2.setPreferredSize(new java.awt.Dimension(75, 30));
+        btnleft2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnleft2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnleft2);
+        btnleft2.setBounds(570, 490, 75, 30);
+
+        btnright2.setPreferredSize(new java.awt.Dimension(75, 30));
+        btnright2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnright2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnright2);
+        btnright2.setBounds(660, 490, 75, 30);
 
         btndado.setPreferredSize(new java.awt.Dimension(100, 100));
         btndado.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +318,11 @@ public class Game_201602909 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btndado);
-        btndado.setBounds(610, 440, 100, 100);
+        btndado.setBounds(570, 230, 100, 100);
+        getContentPane().add(lvidasp1);
+        lvidasp1.setBounds(570, 50, 160, 60);
+        getContentPane().add(lvidasp2);
+        lvidasp2.setBounds(570, 370, 160, 60);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/campo_de_batalla_naruto_shippuden_by_lwisf3rxd-d62dfla.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -194,39 +372,132 @@ public class Game_201602909 extends javax.swing.JFrame {
                 NoDado = no;
                 break;
         }
+    this.AgregarVidasP1();
+    this.AgregarVidasP2();
+    
+        if (tiempo == 300) {
+            JOptionPane.showMessageDialog(null, "El tiempo se ha terminado.", "Tiempo acabado!!!", INFORMATION_MESSAGE);
+            this.setVisible(false);
+        } else if ((Vidasp1 == 0) && (Vidasp2 > Vidasp1)) {
+            JOptionPane.showMessageDialog(null, "El Jugador2 " + lp2.getText() + " ha ganado", "Ganaste!!!", INFORMATION_MESSAGE);
+            this.setVisible(false);
+        } else if ((Vidasp2 == 0) && (Vidasp1 > Vidasp2)) {
+            JOptionPane.showMessageDialog(null, "El Jugador1 " + lp1.getText() + " ha ganado", "Ganaste!!!", INFORMATION_MESSAGE);
+            this.setVisible(false);       
+        }
     }//GEN-LAST:event_btndadoActionPerformed
 
     private void btnupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupActionPerformed
-//    Up1 u1 = new Up1(NoDado,tab);
-//    u1.start();
-
-        Up2 u2 = new Up2(NoDado, tab);
-        u2.start();
+        if (Turno == 0) {
+            lp1.setEnabled(true);
+            lp2.setEnabled(false);
+            Turno++;
+        } else if (Turno == 1) {
+            lp1.setEnabled(false);
+            lp2.setEnabled(true);
+            Turno = 0;
+        }
+        Up1 u1 = new Up1(NoDado, tab,Vidasp1);
+        u1.start();
     }//GEN-LAST:event_btnupActionPerformed
 
     private void btndownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndownActionPerformed
-//    Down1 dn1 = new Down1(NoDado,tab);
-//    dn1.start();
-
-        Down2 dn2 = new Down2(NoDado, tab);
-        dn2.start();
+        if (Turno == 0) {
+            lp1.setEnabled(true);
+            lp2.setEnabled(false);
+            Turno++;
+        } else if (Turno == 1) {
+            lp1.setEnabled(false);
+            lp2.setEnabled(true);
+            Turno = 0;
+        }
+        Down1 dn1 = new Down1(NoDado, tab,Vidasp1);
+        dn1.start();
     }//GEN-LAST:event_btndownActionPerformed
 
     private void btnleftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnleftActionPerformed
-//    Left1 l1 = new Left1(NoDado,tab);
-//    l1.start();
-
-        Left2 l2 = new Left2(NoDado, tab);
-        l2.start();
+        if (Turno == 0) {
+            lp1.setEnabled(true);
+            lp2.setEnabled(false);
+            Turno++;
+        } else if (Turno == 1) {
+            lp1.setEnabled(false);
+            lp2.setEnabled(true);
+            Turno = 0;
+        }
+         Left1 l1 = new Left1(NoDado, tab,Vidasp1);
+         l1.start();
     }//GEN-LAST:event_btnleftActionPerformed
 
     private void btnrightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrightActionPerformed
-// Right1 r1 = new Right1(NoDado,tab);
-//  r1.start();
-
-        Right2 r2 = new Right2(NoDado, tab);
-        r2.start();
+        if (Turno == 0) {
+            lp1.setEnabled(true);
+            lp2.setEnabled(false);
+            Turno++;
+        } else if (Turno == 1) {
+            lp1.setEnabled(false);
+            lp2.setEnabled(true);
+            Turno = 0;
+        }
+        Right1 r1 = new Right1(NoDado, tab,Vidasp1);
+        r1.start();
     }//GEN-LAST:event_btnrightActionPerformed
+
+    private void bntup2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntup2ActionPerformed
+         if (Turno == 0) {
+            lp1.setEnabled(true);
+            lp2.setEnabled(false);
+            Turno++;
+        } else if (Turno == 1) {
+            lp1.setEnabled(false);
+            lp2.setEnabled(true);
+            Turno = 0;
+        }
+        Up2 u2 = new Up2(NoDado, tab,Vidasp2);
+        u2.start();
+    }//GEN-LAST:event_bntup2ActionPerformed
+
+    private void btndown2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndown2ActionPerformed
+         if (Turno == 0) {
+            lp1.setEnabled(true);
+            lp2.setEnabled(false);
+            Turno++;
+        } else if (Turno == 1) {
+            lp1.setEnabled(false);
+            lp2.setEnabled(true);
+            Turno = 0;
+        }
+        Down2 dn2 = new Down2(NoDado, tab,Vidasp2);
+        dn2.start();
+    }//GEN-LAST:event_btndown2ActionPerformed
+
+    private void btnleft2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnleft2ActionPerformed
+         if (Turno == 0) {
+            lp1.setEnabled(true);
+            lp2.setEnabled(false);
+            Turno++;
+        } else if (Turno == 1) {
+            lp1.setEnabled(false);
+            lp2.setEnabled(true);
+            Turno = 0;
+        }
+        Left2 l2 = new Left2(NoDado, tab,Vidasp2);
+        l2.start();
+    }//GEN-LAST:event_btnleft2ActionPerformed
+
+    private void btnright2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnright2ActionPerformed
+         if (Turno == 0) {
+            lp1.setEnabled(true);
+            lp2.setEnabled(false);
+            Turno++;
+        } else if (Turno == 1) {
+            lp1.setEnabled(false);
+            lp2.setEnabled(true);
+            Turno = 0;
+        }
+        Right2 r2 = new Right2(NoDado, tab,Vidasp2);
+        r2.start();
+    }//GEN-LAST:event_btnright2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,14 +535,22 @@ public class Game_201602909 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntup2;
     private javax.swing.JButton btndado;
     private javax.swing.JButton btndown;
+    private javax.swing.JButton btndown2;
     private javax.swing.JButton btnleft;
+    private javax.swing.JButton btnleft2;
     private javax.swing.JButton btnright;
+    private javax.swing.JButton btnright2;
     private javax.swing.JButton btnup;
     public static javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     public static javax.swing.JLabel lp1;
     public static javax.swing.JLabel lp2;
+    private javax.swing.JLabel lvidasp1;
+    private javax.swing.JLabel lvidasp2;
     private javax.swing.JPanel pj;
     // End of variables declaration//GEN-END:variables
 }

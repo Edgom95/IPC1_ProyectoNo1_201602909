@@ -38,7 +38,7 @@ public JLabel Player2;
      this.posgy=(int)((dimension-1)/2);
      this.posgx=0;
      this.posgx2=(int)(dimension-1);
-     this.posgy2=0;
+     this.posgy2=(int)((dimension-1)/2);
      IniciarTablero(dimension);
      }    
      
@@ -50,8 +50,10 @@ public JLabel Player2;
      
      int cp1 = (int)((dimension-1)/2);
      int fp2 = (int)(dimension-1);
+     int cp2 = (int)((dimension-1)/2);
      matriz[0][cp1]=1;
-     matriz[fp2][0]=2;
+     matriz[fp2][cp2]=2;
+     
      VidasAleatorias(dimension);
      BombasAleatorias(dimension);
      

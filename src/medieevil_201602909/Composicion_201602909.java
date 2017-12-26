@@ -159,6 +159,7 @@ public class Composicion_201602909 extends javax.swing.JFrame {
     Game_201602909 g = new Game_201602909();
     g.setVisible(true);
     }
+    this.setVisible(false);
     }//GEN-LAST:event_btnjugarActionPerformed
 
     /**
